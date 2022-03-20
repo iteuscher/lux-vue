@@ -1,13 +1,13 @@
 <template>
   <div class="luxView">
-    <h1>You are viewing: {{ thisSpecificLux.luxName }} (Lux #{{ $route.params.id }})</h1>
+    <h1> {{ thisSpecificLux.luxName }} (Lux #{{ $route.params.id }})</h1>
 
-    <p> Created by: {{ thisSpecificLux.adminName }} | {{ thisSpecificLux.email }} </p>
+    <h3> Created by: {{ thisSpecificLux.adminName }} | {{ thisSpecificLux.email }} </h3>
 
-    <p> About {{ thisSpecificLux.luxName }}: {{ thisSpecificLux.luxDescription }}</p>
-
-    <p> Question 1: </p>
-    <p> Question 2: </p>
+    <h3> About {{ thisSpecificLux.luxName }}: {{ thisSpecificLux.luxDescription }}</h3>
+    <br>
+    <h2> Question 1: </h2>
+    <h2> Question 2: </h2>
 
   </div>
 </template>

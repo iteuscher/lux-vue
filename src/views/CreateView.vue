@@ -3,11 +3,12 @@
     <h1> Create your Lux </h1>
 
     <div class="form-style-5">
-      <form class="CreateLuxForm">
+      <form class="CreateLuxForm" ref="form" onsubmit="event.preventDefault();">
         <fieldset>
           <legend><span class="number">1</span> Admin Info</legend>
           <!-- <label class="form5label" for="personalinfo">This info will be used to send you the link to your Lux</label> -->
-          <input
+          <input 
+            v-model="adminName"
             type="text"
             class="adminname"
             placeholder="Your Name *"
@@ -19,12 +20,13 @@
               background-position: 98% 50%;
             "
           />
-          <input type="email" class="adminemail" placeholder="Your Email *" />
+          <input v-model="email" type="email" class="adminemail" placeholder="Your Email *" />
         </fieldset>
         <fieldset>
           <legend><span class="number">2</span> Lux Info</legend>
-          <input type="text" class="luxname" placeholder="Name of your Lux" />
+          <input v-model="luxName" type="text" class="luxname" placeholder="Name of your Lux" />
           <textarea
+            v-model="luxDescription"
             class="luxdescription"
             placeholder="Description of your Lux"
           ></textarea>
@@ -44,7 +46,7 @@
           /> -->
           <!-- <input class="button addInputButton" value="Remove question" onclick="removeInput('dynamicInput');"/> -->
         </fieldset>
-        <input type="submit" value="Create Lux" />
+        <input v-on:click="submit" type="submit" value="Create Lux" />
       </form>
     </div>
   </div>
@@ -335,38 +337,27 @@ textarea {
 </style>
 
 <script>
-let numofquestions = 2;
-
-// eslint-disable-next-line no-unused-vars
-function addInput(divName) {
-  // if (counter == limit)  { alert("You have reached the limit of adding " + counter + " inputs"); }
-  // else {
-  let newdiv = document.createElement("div");
-  newdiv.innerHTML =
-    "<textarea name='myInputs[]' class='q'+ (numofquestions + 1) + ' placeholder='" +
-    "Question " +
-    (numofquestions + 1) +
-    "'></textarea>";
-  document.getElementById(divName).appendChild(newdiv);
-  numofquestions++;
-} // }
-// function removeInput(divname){
-// if (numofquestions == 1)  { alert("You can't have zero questions!"); }
-// else {
-//   let questions = document.getElementById('dynamicInput')
-//   console.log('numofquestions is at: ' + numofquestions);
-//   questions.removeChild(questions.childNodes[numofquestions-1]);
-//   numofquestions--;
-//   }
-// }
-
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-
-// export default {
-//   name: 'HomeView',
-//   components: {
-//     HelloWorld
-//   }
-// }
+  export default {
+  name: 'CreateView',
+  data() {
+      return {
+        adminName: "",
+        email: "",
+        luxName: "",
+        luxDescription: "",
+    }
+  },
+  methods : {
+    submit : function(){
+      console.log("adding new Lux created by adminName: " + this.adminName + " email: " + this.email);
+      console.log("id will be... " + this.$root.$data.luxes.length+1);
+      let newLux = {id:this.$root.$data.luxes.length+1, adminName:this.adminName, email:this.email, luxName:this.luxName, luxDescription:this.luxDescription};
+      this.$root.$data.luxes.push(newLux);
+      this.adminName = "";
+      this.email = "";
+      this.luxName = "";
+      this.luxDescription = "";
+    }
+  }
+}
 </script>
