@@ -7,6 +7,10 @@
       <router-link to="/present">Present</router-link>
     </nav>
     <router-view/>
+
+     <footer class="text-center text-white fixed-bottom" style="background-color: #212529; padding: 1em; margin-top: 30px; text-align: center;">
+      <a style="color: white" target="_blank" href="https://github.com/iteuscher/lux-vue"><h2>Link to GitHub Repo</h2></a>
+    </footer>
   </div>
 </template>
 
