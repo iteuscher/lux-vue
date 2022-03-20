@@ -37,11 +37,11 @@
             <textarea class="q1" placeholder="Question 1"></textarea>
             <textarea class="q2" placeholder="Question 2"></textarea>
           </div>
-          <input
+          <!-- <input
             class="button addInputButton"
             value="Add question"
             onclick="addInput('dynamicInput');"
-          />
+          /> -->
           <!-- <input class="button addInputButton" value="Remove question" onclick="removeInput('dynamicInput');"/> -->
         </fieldset>
         <input type="submit" value="Create Lux" />

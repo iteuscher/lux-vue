@@ -28,6 +28,12 @@ const routes = [
     name: 'present',
     component: () => import(/* webpackChunkName: "present" */ '../views/PresentView.vue')
   }
+  ,
+  {
+    path: '/lux/:id',
+    name: 'lux',
+    component: () => import(/* webpackChunkName: "present" */ '../views/LuxView.vue')
+  }
 ]
 
 const router = new VueRouter({
